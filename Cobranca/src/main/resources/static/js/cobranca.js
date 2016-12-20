@@ -27,5 +27,23 @@ $(function(){
 		var button = $(event.currentTarget);
 		var link = button.attr('href');
 		
+		var response = $.ajax({
+			url: link,
+			type:'PUT'
+		});
+		
+		response.done(function(e){
+			var codigo = button.data('codigo');
+			
+			$('[data-role=' + codigo + ']').html('<span class="label label-success">' + e + '</span>')
+			
+			button.hide();
+		});
+		
+		response.fail(function(e){
+			console.log(e);
+			alert('falha ao atualizar o recebimento do titulo');
+		});
+		
 	}));
 });

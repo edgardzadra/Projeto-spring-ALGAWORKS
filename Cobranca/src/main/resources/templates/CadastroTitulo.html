@@ -8,7 +8,7 @@
 </head>
 
 <section layout:fragment="conteudo">
-<form class="form-horizontal" action="/titulo" method="POST" th:object="${titulo}">
+<form class="form-horizontal" th:action="@{/titulo}" method="POST" th:object="${titulo}">
 	
 	<div layout:include="mensagemErro"></div>
 	<div layout:include="mensagemPadrao"></div>
@@ -19,7 +19,7 @@
 		<div class="panel-heading">
     		<div class="clearfix">
     			<h1 class="panel-title zl-titulo-panel">Novo Título</h1>
-    			<a class="btn btn-link zl-link-panel" href="/titulo">Voltar Pesquisa de Titulo</a>
+    			<a class="btn btn-link zl-link-panel" th:href="@{/titulo}">Voltar Pesquisa de Titulo</a>
     		</div>
   		</div>
   		<div class="panel-body">
@@ -51,7 +51,7 @@
     		<label for="status" class="col-sm-2 control-label">Status:</label>
     		<div class="col-sm-2">
       			<select class="form-control" id="status" name="status">
- 					<option th:each="status : ${statusTitulo}" th:value="${status}" th:text="${status.descricao}"></option>
+ 					<option th:each="status : ${statusTitulo}" th:value="${status}" th:text="${status.descricao}" th:field="*{status}"></option>
 				</select>
     		</div>
   		</div>
